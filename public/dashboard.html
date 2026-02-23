@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: linear-gradient(to right, #11998e, #38ef7d);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+    }
+
+    .box {
+      background: rgba(0,0,0,0.3);
+      padding: 40px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      background: white;
+      color: #11998e;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h1 id="welcomeText">Welcome 🎉</h1>
+    <p>You have successfully logged in.</p>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <script>
+    const userName = localStorage.getItem("userName");
+
+    if (!userName) {
+      window.location.href = "/login.html";
+    } else {
+      document.getElementById("welcomeText").textContent =
+        "Welcome, " + userName + " 🎉";
+    }
+
+    function logout() {
+      localStorage.removeItem("userName");
+      window.location.href = "/login.html";
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial;
+      background: linear-gradient(to right, #667eea, #764ba2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      width: 300px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      position: relative;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #667eea;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #5563c1;
+    }
+
+    .message {
+      position: absolute;
+      top: -50px;
+      left: 0;
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      display: none;
+      color: white;
+    }
+
+    .success {
+      background: #4BB543;
+    }
+
+    .error {
+      background: #ff4d4d;
+    }
+
+    .show {
+      display: block;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div id="messageBox" class="message"></div>
+
+    <h2>Login</h2>
+
+    <form id="loginForm">
+      <input type="email" name="email" placeholder="Enter Email" required />
+      <input type="password" name="password" placeholder="Enter Password" required />
+      <button type="submit">Login</button>
+    </form>
+
+  </div>
+
+
+  <script>
+  const form = document.getElementById("loginForm");
+  const messageBox = document.getElementById("messageBox");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = form.email.value;
+    const password = form.password.value;
+
+    const response = await fetch("/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ email, password })
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+
+      localStorage.setItem("userName", data.name);
+
+      window.location.href = "/dashboard.html";
+    } else {
+      const result = await response.text();
+      messageBox.textContent = result;
+      messageBox.classList.add("show", "error");
+
+      setTimeout(() => {
+        messageBox.classList.remove("show");
+      }, 3000);
+    }
+  });
+</script>
+
+
+
+</body>
+</html>

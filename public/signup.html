@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Signup</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      width: 300px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #4facfe;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #4facfe;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #00c6ff;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h2>Signup Form</h2>
+
+    <form action="/signup" method="POST">
+      <input type="text" name="name" placeholder="Enter Name" required />
+      <input type="email" name="email" placeholder="Enter Email" required />
+      <input type="password" name="password" placeholder="Enter Password" required />
+      <button type="submit">Signup</button>
+    </form>
+  </div>
+
+</body>
+<script>
+    const result = await response.text();
+
+messageBox.textContent = result;
+messageBox.classList.add("show");
+
+if (response.ok) {
+  messageBox.classList.add("success");
+} else {
+  messageBox.classList.add("error");
+}
+</script>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #667eea, #764ba2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+    }
+
+    .container {
+      text-align: center;
+      background: rgba(0,0,0,0.3);
+      padding: 50px;
+      border-radius: 15px;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+    }
+
+    button {
+      padding: 15px 30px;
+      margin: 10px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      color: white;
+      background: #4facfe;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #00f2fe;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Welcome to ProjectDB App</h1>
+    <button onclick="goSignup()">Signup</button>
+    <button onclick="goLogin()">Login</button>
+  </div>
+
+  <script>
+    function goSignup() {
+      window.location.href = "/signup.html";
+    }
+
+    function goLogin() {
+      window.location.href = "/login.html";
+    }
+  </script>
+
+</body>
+</html>
